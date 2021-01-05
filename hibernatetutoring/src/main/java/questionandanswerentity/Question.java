@@ -3,6 +3,7 @@ package questionandanswerentity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -14,7 +15,9 @@ public class Question {
 	private String question;
 	private String q_status;
 
-	@OneToMany(mappedBy="question")
+
+	@OneToMany(mappedBy = "question", orphanRemoval = true, cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy="question")
 	private List<Answer> answerList= new ArrayList<Answer>();
 
 	public int getQ_id() {

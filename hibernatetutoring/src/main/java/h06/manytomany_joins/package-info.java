@@ -1,0 +1,1 @@
+package h06.manytomany_joins;

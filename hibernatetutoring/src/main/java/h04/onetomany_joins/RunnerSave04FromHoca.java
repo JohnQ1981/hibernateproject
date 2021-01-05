@@ -12,6 +12,7 @@ public class RunnerSave04FromHoca {
 		Books04 book1 = new Books04();
 		Books04 book2 = new Books04();
 		Books04 book3 = new Books04();
+		Books04 book = new Books04();
 
 		Students04 std1 = new Students04();
 		Students04 std2 = new Students04();

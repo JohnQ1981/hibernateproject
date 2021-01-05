@@ -71,43 +71,43 @@ public class RunnerFetch04FromHoca {
 		System.out.println("55555555555555555555555555");
 		//2.Way: Use HQL
 		//*********** HQL is case sensitive in class names ***************
-		String hqlQuery2 = "SELECT s.name, b.book_name, b.book_id \n"
-				+ "FROM Students04 s LEFT JOIN FETCH Books04 b\n"
-				+ "ON s.std_id = b.student";
-		List<Object[]> resultList4 = session.createQuery(hqlQuery2).getResultList();
-		for(Object[] w : resultList4) {
-			System.out.println(Arrays.toString(w));
-		}
+		//		String hqlQuery2 = "SELECT s.name, b.book_name, b.book_id \n"
+		//				+ "FROM Students04 s LEFT JOIN FETCH Books04 b\n"
+		//				+ "ON s.std_id = b.student";
+		//		List<Object[]> resultList4 = session.createQuery(hqlQuery2).getResultList();
+		//		for(Object[] w : resultList4) {
+		//			System.out.println(Arrays.toString(w));
+		//		}
 		System.out.println("SQL is belowwwwwwwwwwwwww");
 		//Example 5: Fetch student name, book name of records from Books04 table (RIGHT JOIN)
 		//1.Way: Use SQL
-		String sqlQuery3 = "SELECT s.name, b.book_name, b.book_id \n"
-				+ "FROM students04 s RIGHT JOIN books04 b\n"
-				+ "ON s.std_id = b.student_id";
-		List<Object[]> resultList5 = session.createSQLQuery(sqlQuery3).getResultList();
-		for(Object[] w : resultList5) {
-			System.out.println(Arrays.toString(w));
-		}
+		//		String sqlQuery3 = "SELECT s.name, b.book_name, b.book_id \n"
+		//				+ "FROM students04 s RIGHT JOIN books04 b\n"
+		//				+ "ON s.std_id = b.student_id";
+		//		List<Object[]> resultList5 = session.createSQLQuery(sqlQuery3).getResultList();
+		//		for(Object[] w : resultList5) {
+		//			System.out.println(Arrays.toString(w));
+		//		}
 		System.out.println("HQL is belowwwwwwwwwwwwww");
 		//2.Way: Use HQL
 		//*********** HQL is case sensitive in class names ***************
-		String hqlQuery3 = "SELECT s.name, b.book_name, b.book_id \n"
-				+ "FROM Students04 s RIGHT JOIN FETCH Books04 b\n"
-				+ "ON s.std_id = b.student";
-		List<Object[]> resultList6 = session.createQuery(hqlQuery3).getResultList();
-		for(Object[] w : resultList6) {
-			System.out.println(Arrays.toString(w));
-		}
+		//		String hqlQuery3 = "SELECT s.name, b.book_name, b.book_id \n"
+		//				+ "FROM Students04 s RIGHT JOIN FETCH Books04 b\n"
+		//				+ "ON s.std_id = b.student";
+		//		List<Object[]> resultList6 = session.createQuery(hqlQuery3).getResultList();
+		//		for(Object[] w : resultList6) {
+		//			System.out.println(Arrays.toString(w));
+		//		}
 
 		//Example 6: Fetch student name, book name of all records from Students04 and Books04 table (FULL JOIN)
 		//1.Way: Use SQL
-		String sqlQuery4 = "SELECT s.name, b.book_name, b.book_id \n"
-				+ "FROM students04 s FULL JOIN books04 b\n"
-				+ "ON s.std_id = b.student_id";
-		List<Object[]> resultList7 = session.createSQLQuery(sqlQuery4).getResultList();
-		for(Object[] w : resultList7) {
-			System.out.println(Arrays.toString(w));
-		}
+		//		String sqlQuery4 = "SELECT s.name, b.book_name, b.book_id \n"
+		//				+ "FROM students04 s FULL JOIN books04 b\n"
+		//				+ "ON s.std_id = b.student_id";
+		//		List<Object[]> resultList7 = session.createSQLQuery(sqlQuery4).getResultList();
+		//		for(Object[] w : resultList7) {
+		//			System.out.println(Arrays.toString(w));
+		//		}
 
 		//2.Way: Use SQL
 		//		String hqlQuery4 = "SELECT s.name, b.book_name, b.book_id \n"
@@ -120,14 +120,51 @@ public class RunnerFetch04FromHoca {
 
 		//How to delete all records from a table
 		//1.Way: SQL
-		String sqlQuery5 = "DELETE FROM Books05";
-		int numOfRec1 = session.createSQLQuery(sqlQuery5).executeUpdate();
-		System.out.println(numOfRec1);
-		System.out.println("Records deleted from Books05 deleted");
-		//2.Way: HQL
-		String hqlQuery6 = "DELETE FROM Books05";
-		int numOfRec2 = session.createQuery(hqlQuery6).executeUpdate();
-		System.out.println("The number of deleted records: " + numOfRec2);
+		//		String sqlQuery5 = "DELETE FROM Books05";
+		//		int numOfRec1 = session.createSQLQuery(sqlQuery5).executeUpdate();
+		//		System.out.println(numOfRec1);
+		//		System.out.println("Records deleted from Books05 deleted");
+		//		//2.Way: HQL
+		//		String hqlQuery6 = "DELETE FROM Books05";
+		//		int numOfRec2 = session.createQuery(hqlQuery6).executeUpdate();
+		//		System.out.println("The number of deleted records: " + numOfRec2);
+
+		//How to delete a record by using delete(<Object Name>) method
+
+		//		book=session.get(Books04.class, 101);
+		//		session.delete(book);
+
+
+		//		String hql8="DELETE FROM Students04 s WHERE s.std_id=1005";
+		//
+		//		int numofDel=session.createQuery(hql8).executeUpdate();
+		//		System.out.println(numofDel);
+
+
+
+
+		//HOW TO DELETE PARENT RECORD WITHOUT ANY EXCEPTION
+
+		//1ST STEP DELETE ; CHILD RECORD OF THE 1002
+
+		//		book= session.get(Books04.class, 103);
+		//		session.delete(book);
+		//2nd step delete the parent record of 1002
+		//		student = session.get(Students04.class, 1002);
+		//		session.delete(student);
+
+		//above way is not recommended
+		//2way of deleting parent records
+
+		//1st Step:  a)go to parent class then
+		//b) Change "@OneToMany(mappedBy ="student")"  to
+
+
+		student=session.get(Students04.class, 1002);
+
+		session.delete(student);
+
+
 
 		tx.commit();
 
