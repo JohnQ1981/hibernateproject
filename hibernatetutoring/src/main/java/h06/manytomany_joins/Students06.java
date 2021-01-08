@@ -71,5 +71,11 @@ public class Students06 {
 	} 
 
 
+	//	@Override
+	//	public String toString() {
+	//		return "Students06 [std_id=" + std_id + ", name=" + name + ", grade=" + grade + "]";
+	//	}
+
+
 
 }

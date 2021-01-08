@@ -40,6 +40,13 @@ public class Books06 {
 		this.studentList = studentList;
 	}
 
+
+	//	@Override
+	//	public String toString() {
+	//		return "Books06 [book_id=" + book_id + ", book_name=" + book_name + ", studentList=" + studentList + "]";
+	//	}
+
+
 	@Override
 	public String toString() {
 		return "Books06 [book_id=" + book_id + ", book_name=" + book_name + "]";

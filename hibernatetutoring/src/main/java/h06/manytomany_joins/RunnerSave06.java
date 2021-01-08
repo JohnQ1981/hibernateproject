@@ -58,13 +58,13 @@ public class RunnerSave06 {
 
 		Transaction tx = session.beginTransaction();
 
-		//		session.save(b1);
-		//		session.save(b2);
-		//
-		//		session.save(s1);
-		//		session.save(s2);
-		//		session.save(s3);
-		session.save(s4);
+		//session.save(b1);
+		//session.save(b2);
+
+		session.save(s1);
+		session.save(s2);
+		session.save(s3);
+		//session.save(s4);
 		tx.commit();
 
 	}
